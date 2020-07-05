@@ -24,12 +24,23 @@ function printMoves(moves) {
   document.getElementById("moves").innerHTML = moves;
 }
 
+let playerResultCount = 0;
+let computerResult = 0;
+
+function printResult(results) {
+  document.getElementById("results").innerHTML = results;
+  printResult('Ty X:X Komputer');
+}
+
 function displayResult(playerMove, computerMove) {
   if (playerMove == computerMove) {
     printWinner('remis');
   }
   if (playerMove == 'nożyce' && computerMove == 'papier') {
     printWinner('Ty wygrywasz');
+  }
+  if (playerMove == 'papier' && computerMove == 'nożyce') {
+    printWinner('Komputer wygrywa');
   }
   if (playerMove == 'papier' && computerMove == 'kamień') {
     printWinner('Ty wygrywasz');
@@ -39,9 +50,6 @@ function displayResult(playerMove, computerMove) {
   }
   if (playerMove == 'kamień' && computerMove == 'nożyce') {
     printWinner('Ty wygrywasz');
-  }
-  if (playerMove == 'papier' && computerMove == 'nożyce') {
-    printWinner('Komputer wygrywa');
   }
   if (playerMove == 'nożyce' && computerMove == 'kamień') {
     printWinner('Komputer wygrywa');
@@ -61,14 +69,4 @@ function playGame() {
   const computerMove = getMoveName(argComputerMove);
   // both players moves are comparing, and returning as result
   displayResult(playerMove, computerMove);
-
-  let playerResultCount = 0;
-  let computerResult = 0;
 }
-
-// 0. Wyświetlanie wartości początkowej 0
-// 1. Pobieranie wyniku z ruchu gracza
-// 2. Pobieranie wyniku wyboru komputera
-// 3. Porównanie wyników obu graczy (if else)
-// 4. Zapisywanie wyników (?)
-// 5. Wyświetlanie wyników
