@@ -1,5 +1,6 @@
 // running play-game function
 document.getElementById("play-game").addEventListener("click", playGame);
+document.getElementById("reset-score").addEventListener("click", resetScore);
 
 function getRandomNumber(lowerLimit, upperLimit) {
   return Math.floor(Math.random() * (upperLimit - lowerLimit + 1)) + lowerLimit;
@@ -29,7 +30,6 @@ let computerResult = 0;
 
 function printResult(results) {
   document.getElementById("results").innerHTML = results;
-  printResult('Ty X:X Komputer');
 }
 
 function displayResult(playerMove, computerMove) {
@@ -37,26 +37,42 @@ function displayResult(playerMove, computerMove) {
     printWinner('remis');
   }
   if (playerMove == 'nożyce' && computerMove == 'papier') {
+    playerResultCount++;
     printWinner('Ty wygrywasz');
   }
   if (playerMove == 'papier' && computerMove == 'nożyce') {
+    computerResult++;
     printWinner('Komputer wygrywa');
   }
   if (playerMove == 'papier' && computerMove == 'kamień') {
+    playerResultCount++;
     printWinner('Ty wygrywasz');
   }
   if (playerMove == 'kamień' && computerMove == 'papier') {
+    computerResult++;
     printWinner('Komputer wygrywa');
   }
   if (playerMove == 'kamień' && computerMove == 'nożyce') {
+    playerResultCount++;
     printWinner('Ty wygrywasz');
   }
   if (playerMove == 'nożyce' && computerMove == 'kamień') {
+    computerResult++;
     printWinner('Komputer wygrywa');
   }
   printMoves('Zagrałem ' + computerMove + ', a Ty ' + playerMove);
+  printResult('Ty ' + playerResultCount + ":" + computerResult + ' Komputer');
 }
 
+function refereshScore() {
+	printResult('Ty ' + playerResultCount + ":" + computerResult + ' Komputer');
+}
+
+function resetScore() {
+  playerResultCount = 0;
+  computerResult = 0;
+  refereshScore();
+}
 
 function playGame() {
   // player's choosing an option in popup window
