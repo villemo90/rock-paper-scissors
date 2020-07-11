@@ -29,7 +29,7 @@ let playerResultCount = 0;
 let computerResult = 0;
 
 function printResult(results) {
-  document.getElementById("results").innerHTML = results;
+  document.getElementById("results").innerHTML = 'Ty ' + playerResultCount + ":" + computerResult + ' Komputer';
 }
 
 function displayResult(playerMove, computerMove) {
@@ -61,17 +61,14 @@ function displayResult(playerMove, computerMove) {
     printWinner('Komputer wygrywa');
   }
   printMoves('Zagrałem ' + computerMove + ', a Ty ' + playerMove);
-  document.getElementById("results").innerHTML = 'Ty ' + playerResultCount + ":" + computerResult + ' Komputer';
+  printResult('Ty ' + playerResultCount + ":" + computerResult + ' Komputer');
 }
 
-function refereshScore() {
-	document.getElementById("results").innerHTML = 'Ty ' + playerResultCount + ":" + computerResult + ' Komputer';
-}
 
 function resetScore() {
   playerResultCount = 0;
   computerResult = 0;
-  refereshScore();
+  printResult();
 }
 
 function playGame() {
